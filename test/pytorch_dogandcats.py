@@ -67,8 +67,10 @@ simple_transform = transforms.Compose([transforms.Scale((224,224)), transforms.T
 train = ImageFolder("C:/Users/a/Downloads/train/train/", simple_transform)
 valid = ImageFolder("C:/Users/a/Downloads/train/valid/", simple_transform)
 
-print(train)
-print(valid)
+train_data_gen = torch.utils.data.DataLoader(train, batch_size=64, num_workers=3)
+
+valid_data_gen = torch.utils.data.DataLoader(valid, batch_size=64, num_workers=3)
+
 
 # tensor 객체를 시각화 하기 위한 함수
 # tensor -> numpy 변환 후 데이터 형상 재구성 후 역정규화 해줘야함.
@@ -85,5 +87,9 @@ def Tensor_imshow(inp):
     # cv2.destroyAllWindows()
 
 if __name__ == "__main__":
+    print(train_data_gen)
+    print(valid_data_gen)
+
+
     # print(train[50][0])
-    Tensor_imshow(train[50][0])
+    # Tensor_imshow(train[50][0])
